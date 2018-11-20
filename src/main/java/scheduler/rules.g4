@@ -9,7 +9,7 @@ create_lecturer: K_CREATE K_LECTURER lecturer_name K_AVAILABLE K_AT time_specifi
 // MAKE SCHEDULE FOR NLP, ML;
 make_schedule: K_MAKE K_SCHEDULE K_FOR class_target;
 // CONSTRAIN ML NOT OVERLAPPING WITH NLP
-make_constrain: K_CONSTRAIN K_NOT K_OVERLAPPING class_name (COMMA class_name)+;
+make_constrain: K_CONSTRAINT K_NOT K_OVERLAPPING class_name (COMMA class_name)+;
 time_specification : K_DAYS K_FROM NUM K_UNTIL NUM;
 
 
@@ -29,7 +29,7 @@ K_AVAILABLE : A V A I L A B L E;
 K_BY : B Y;
 K_CLASS : C L A S S;
 K_CLASSROOM : C L A S S R O O M;
-K_CONSTRAIN : C O N S T R A I N;
+K_CONSTRAIN : C O N S T R A I N T;
 K_CREATE : C R E A T E;
 K_DAYS : C_MONDAY | C_TUESDAY | C_WEDNESDAY | C_THURSDAY | C_FRIDAY | C_SATURDAY | C_SUNDAY;
 K_FACILITIES : F A C I L I T I E S;
