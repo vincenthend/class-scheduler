@@ -1,5 +1,5 @@
 grammar rules;
-start : ((create_classroom | create_class | create_lecturer | make_schedule | make_constrain)';')+;
+start : ((create_classroom | create_class | create_lecturer | create_schedule | make_constrain)';')+;
 // CREATE CLASSROOM 7602 FOR 100 STUDENTS WITH FACILITIES 'PROJECTOR', 'AC';
 create_classroom: K_CREATE K_CLASSROOM classroom_name K_FOR num_students K_STUDENTS (K_WITH K_FACILITIES facility_name (COMMA facility_name)*)?;
 // CREATE CLASS 'ML' TAUGHT BY "Bu Dessi" FOR 100 STUDENTS REQUIRING 'AC';
@@ -7,7 +7,7 @@ create_class: K_CREATE K_CLASS class_name K_TAUGHT K_BY lecturer_name K_FOR num_
 // CREATE LECTURER 'Bu Dessi' AVAILABLE AT SUNDAY FROM 7 UNTIL 10, WEDNESDAY FROM 7 UNTIL 10
 create_lecturer: K_CREATE K_LECTURER lecturer_name K_AVAILABLE K_AT time_specification (COMMA time_specification)*;
 // MAKE SCHEDULE FOR NLP, ML;
-make_schedule: K_MAKE K_SCHEDULE K_FOR class_target;
+create_schedule: K_CREATE K_SCHEDULE K_FOR class_target;
 // CONSTRAIN ML NOT OVERLAPPING WITH NLP
 make_constrain: K_CONSTRAINT K_NOT K_OVERLAPPING class_name (COMMA class_name)+;
 time_specification : K_DAYS K_FROM NUM K_UNTIL NUM;
@@ -29,14 +29,13 @@ K_AVAILABLE : A V A I L A B L E;
 K_BY : B Y;
 K_CLASS : C L A S S;
 K_CLASSROOM : C L A S S R O O M;
-K_CONSTRAIN : C O N S T R A I N T;
+K_CONSTRAINT : C O N S T R A I N T;
 K_CREATE : C R E A T E;
 K_DAYS : C_MONDAY | C_TUESDAY | C_WEDNESDAY | C_THURSDAY | C_FRIDAY | C_SATURDAY | C_SUNDAY;
 K_FACILITIES : F A C I L I T I E S;
 K_FOR : F O R;
 K_FROM : F R O M;
 K_LECTURER : L E C T U R E R;
-K_MAKE : M A K E;
 K_NOT : N O T;
 K_OVERLAPPING : O V E R L A P P I N G;
 K_REQUIRING : R E Q U I R I N G;
