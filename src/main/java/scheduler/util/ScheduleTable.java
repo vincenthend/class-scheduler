@@ -2,6 +2,9 @@ package scheduler.util;
 
 import scheduler.model.Schedule;
 
+import java.time.format.TextStyle;
+import java.util.Locale;
+
 public class ScheduleTable {
 
     private static final String NUMBER_COLUMN_NAME = "No";
@@ -37,29 +40,123 @@ public class ScheduleTable {
         this.lectureColumnWidth = getLectureColumnWidth();
         this.lecturerColumnWidth = getLecturerColumnWidth();
 
-        // Print table header
-        System.out.print("+"); for(int idx = 0; idx < this.numberColumnWidth + 2; idx++) System.out.print("-");
-        System.out.print("+"); for(int idx = 0; idx < this.dayColumnWidth + 2; idx++) System.out.print("-");
-        System.out.print("+"); for(int idx = 0; idx < this.timeColumnWidth + 2; idx++) System.out.print("-");
-        System.out.print("+"); for(int idx = 0; idx < this.classroomColumnWidth + 2; idx++) System.out.print("-");
-        System.out.print("+"); for(int idx = 0; idx < this.lectureColumnWidth + 2; idx++) System.out.print("-");
-        System.out.print("+"); for(int idx = 0; idx < this.lecturerColumnWidth + 2; idx++) System.out.print("-");
+        // Print table header + upper border
+        System.out.print("+");
+        for(int idx = 0; idx < this.numberColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.print("+");
+        for(int idx = 0; idx < this.dayColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.print("+");
+        for(int idx = 0; idx < this.timeColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.print("+");
+        for(int idx = 0; idx < this.classroomColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.print("+");
+        for(int idx = 0; idx < this.lectureColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.print("+");
+        for(int idx = 0; idx < this.lecturerColumnWidth + 2; idx++) System.out.print("-");
+
         System.out.println("+");
 
-        System.out.print("| "); System.out.print(ScheduleTable.NUMBER_COLUMN_NAME); for(int idx = ScheduleTable.NUMBER_COLUMN_NAME.length(); idx < this.numberColumnWidth; idx++) System.out.print(" ");
-        System.out.print(" | "); System.out.print(ScheduleTable.DAY_COLUMN_NAME); for(int idx = ScheduleTable.DAY_COLUMN_NAME.length(); idx < this.dayColumnWidth; idx++) System.out.print(" ");
-        System.out.print(" | "); System.out.print(ScheduleTable.TIME_COLUMN_NAME); for(int idx = ScheduleTable.TIME_COLUMN_NAME.length(); idx < this.timeColumnWidth; idx++) System.out.print(" ");
-        System.out.print(" | "); System.out.print(ScheduleTable.CLASSROOM_COLUMN_NAME); for(int idx = ScheduleTable.CLASSROOM_COLUMN_NAME.length(); idx < this.classroomColumnWidth; idx++) System.out.print(" ");
-        System.out.print(" | "); System.out.print(ScheduleTable.LECTURE_COLUMN_NAME); for(int idx = ScheduleTable.LECTURE_COLUMN_NAME.length(); idx < this.lectureColumnWidth; idx++) System.out.print(" ");
-        System.out.print(" | "); System.out.print(ScheduleTable.LECTURER_COLUMN_NAME); for(int idx = ScheduleTable.LECTURER_COLUMN_NAME.length(); idx < this.lecturerColumnWidth; idx++) System.out.print(" ");
+        System.out.print("| ");
+        System.out.print(ScheduleTable.NUMBER_COLUMN_NAME);
+        for(int idx = ScheduleTable.NUMBER_COLUMN_NAME.length(); idx < this.numberColumnWidth; idx++) System.out.print(" ");
+
+        System.out.print(" | ");
+        System.out.print(ScheduleTable.DAY_COLUMN_NAME);
+        for(int idx = ScheduleTable.DAY_COLUMN_NAME.length(); idx < this.dayColumnWidth; idx++) System.out.print(" ");
+
+        System.out.print(" | ");
+        System.out.print(ScheduleTable.TIME_COLUMN_NAME);
+        for(int idx = ScheduleTable.TIME_COLUMN_NAME.length(); idx < this.timeColumnWidth; idx++) System.out.print(" ");
+
+        System.out.print(" | ");
+        System.out.print(ScheduleTable.CLASSROOM_COLUMN_NAME);
+        for(int idx = ScheduleTable.CLASSROOM_COLUMN_NAME.length(); idx < this.classroomColumnWidth; idx++) System.out.print(" ");
+
+        System.out.print(" | ");
+        System.out.print(ScheduleTable.LECTURE_COLUMN_NAME);
+        for(int idx = ScheduleTable.LECTURE_COLUMN_NAME.length(); idx < this.lectureColumnWidth; idx++) System.out.print(" ");
+
+        System.out.print(" | ");
+        System.out.print(ScheduleTable.LECTURER_COLUMN_NAME);
+        for(int idx = ScheduleTable.LECTURER_COLUMN_NAME.length(); idx < this.lecturerColumnWidth; idx++) System.out.print(" ");
+
         System.out.println(" |");
 
-        System.out.print("+"); for(int idx = 0; idx < this.numberColumnWidth + 2; idx++) System.out.print("-");
-        System.out.print("+"); for(int idx = 0; idx < this.dayColumnWidth + 2; idx++) System.out.print("-");
-        System.out.print("+"); for(int idx = 0; idx < this.timeColumnWidth + 2; idx++) System.out.print("-");
-        System.out.print("+"); for(int idx = 0; idx < this.classroomColumnWidth + 2; idx++) System.out.print("-");
-        System.out.print("+"); for(int idx = 0; idx < this.lectureColumnWidth + 2; idx++) System.out.print("-");
-        System.out.print("+"); for(int idx = 0; idx < this.lecturerColumnWidth + 2; idx++) System.out.print("-");
+        System.out.print("+");
+        for(int idx = 0; idx < this.numberColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.print("+");
+        for(int idx = 0; idx < this.dayColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.print("+");
+        for(int idx = 0; idx < this.timeColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.print("+");
+        for(int idx = 0; idx < this.classroomColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.print("+");
+        for(int idx = 0; idx < this.lectureColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.print("+");
+        for(int idx = 0; idx < this.lecturerColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.println("+");
+
+        // Print table data
+        for(int index = 0; index < this.schedules.length; index++) {
+            System.out.print("| ");
+            System.out.print(index + 1);
+            for(int idx = Integer.toString(index + 1).length(); idx < this.numberColumnWidth; idx++) System.out.print(" ");
+
+            System.out.print(" | ");
+            String day = this.schedules[index].time.day.getDisplayName(TextStyle.FULL, Locale.getDefault());
+            System.out.print(day);
+            for(int idx = day.length(); idx < this.dayColumnWidth; idx++) System.out.print(" ");
+
+            System.out.print(" | ");
+            String time = this.schedules[index].time.start + "-" + this.schedules[index].time.end;
+            System.out.print(time);
+            for(int idx = time.length(); idx < this.timeColumnWidth; idx++) System.out.print(" ");
+
+            System.out.print(" | ");
+            System.out.print(this.schedules[index].classroom.name);
+            for(int idx = this.schedules[index].classroom.name.length(); idx < this.classroomColumnWidth; idx++) System.out.print(" ");
+
+            System.out.print(" | ");
+            System.out.print(this.schedules[index].lecture.name);
+            for(int idx = this.schedules[index].lecture.name.length(); idx < this.lectureColumnWidth; idx++) System.out.print(" ");
+
+            System.out.print(" | ");
+            System.out.print(this.schedules[index].lecture.lecturer.name);
+            for(int idx = this.schedules[index].lecture.lecturer.name.length(); idx < this.lecturerColumnWidth; idx++) System.out.print(" ");
+
+            System.out.println(" |");
+        }
+
+        // Print table bottom border
+        System.out.print("+");
+        for(int idx = 0; idx < this.numberColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.print("+");
+        for(int idx = 0; idx < this.dayColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.print("+");
+        for(int idx = 0; idx < this.timeColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.print("+");
+        for(int idx = 0; idx < this.classroomColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.print("+");
+        for(int idx = 0; idx < this.lectureColumnWidth + 2; idx++) System.out.print("-");
+
+        System.out.print("+");
+        for(int idx = 0; idx < this.lecturerColumnWidth + 2; idx++) System.out.print("-");
+
         System.out.println("+");
     }
 

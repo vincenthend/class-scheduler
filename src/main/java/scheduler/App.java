@@ -20,16 +20,23 @@ public class App {
 
     // Read parser
     Scanner s = new Scanner(System.in);
+    System.out.print("scheduler=# ");
     String input = s.nextLine();
-    CharStream cs = CharStreams.fromString(input);
+    while(!input.equals("\\q")) {
+      if(!input.equals("\\q")) {
+        CharStream cs = CharStreams.fromString(input);
 
-    // Tokenize and build parse tree
-    SchedulerLexer lexer = new SchedulerLexer(cs);
-    CommonTokenStream tokens = new CommonTokenStream(lexer);
+        // Tokenize and build parse tree
+        SchedulerLexer lexer = new SchedulerLexer(cs);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
 
-    SchedulerParser parser = new SchedulerParser(tokens);
-    // Serialize object and Schedule
-    parser.addParseListener(listener);
-    parser.start();
+        SchedulerParser parser = new SchedulerParser(tokens);
+        // Serialize object and Schedule
+        parser.addParseListener(listener);
+        parser.start();
+        System.out.print("scheduler=# ");
+        input = s.nextLine();
+      }
+    }
   }
 }
