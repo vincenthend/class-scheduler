@@ -8,6 +8,7 @@ import scheduler.model.type.Time;
 
 import java.time.DayOfWeek;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Scheduler {
 
@@ -31,9 +32,20 @@ public class Scheduler {
 
     public Schedule[] schedule() {
         this.schedules = new Schedule[this.lectures.length];
-        Arrays.fill(schedules, null);
+        Arrays.fill(this.schedules, null);
 
         assignSchedule(0);
+
+        Arrays.sort(this.schedules, (schedule1, schedule2) -> {
+            // Different day
+            if(schedule1.time.day.getValue() < schedule2.time.day.getValue()) return -1;
+            if(schedule1.time.day.getValue() > schedule2.time.day.getValue()) return 1;
+
+            // Same day, different start time
+            if(schedule1.time.start < schedule2.time.start) return -1;
+            else return 1;
+        });
+
         return this.schedules;
     }
 

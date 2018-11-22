@@ -24,7 +24,7 @@ public class App {
             Classroom room7602 = new Classroom("7602", 50, Facility.WHITEBOARD, Facility.PROJECTOR);
             Classroom room7603 = new Classroom("7603", 40, Facility.WHITEBOARD);
             Lecturer dessi = new Lecturer("Dessi", new Time(DayOfWeek.SUNDAY, 7, 13));
-            Lecturer windy = new Lecturer("Windy", new Time(DayOfWeek.SUNDAY, 7, 8));
+            Lecturer windy = new Lecturer("Windy", new Time(DayOfWeek.SATURDAY, 7, 8));
             Lecture ml = new Lecture("ML", dessi, 50, Facility.PROJECTOR);
             Lecture sil = new Lecture("SIL", windy, 30, Facility.WHITEBOARD);
             Constraint constraint = new Constraint(ml, sil);
