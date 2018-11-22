@@ -15,6 +15,6 @@ public class Facilities {
     }
 
     public boolean hasAllOf(Facilities facilities) {
-        return (this.indexes | ~facilities.indexes) == (1 << Facility.values().length) - 1;
+        return (this.indexes | ~facilities.indexes) == -1;
     }
 }

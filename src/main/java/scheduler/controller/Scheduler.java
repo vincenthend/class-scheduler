@@ -14,22 +14,20 @@ public class Scheduler {
     public Lecture[] lectures;
     public Classroom[] classrooms;
     public Constraint[] constraints;
-
     private Schedule[] schedules;
 
     public Scheduler() {}
-
-    public void setLectures(Lecture[] lectures) {
+    public void setLectures(Lecture... lectures) {
         this.lectures = lectures;
     }
-
-    public void setClassrooms(Classroom[] classrooms) {
+    public void setClassrooms(Classroom... classrooms) {
         this.classrooms = classrooms;
     }
-
-    public void setConstraints(Constraint[] constraints) {
+    public void setConstraints(Constraint... constraints) {
         this.constraints = constraints;
     }
+
+    /* Scheduling */
 
     public Schedule[] schedule() {
         this.schedules = new Schedule[this.lectures.length];
@@ -44,22 +42,23 @@ public class Scheduler {
         if(lectureIdx == this.lectures.length) return true;
 
         // Assign with all possible classrooms and available time
-        boolean assigned = false;
+        boolean assigned;
+
         Lecture lecture = this.lectures[lectureIdx];
         Time[] availability = lecture.lecturer.availability;
 
         for(Classroom classroom : this.classrooms) {
-            if(classroom.canAccommodate(lecture.students, lecture.requirements)) {
-                for(Time time : availability) {
-                    for(int start = time.start; start < time.end; start++) {
-                        if(isClassroomAvailableWithSchedule(lectureIdx, classroom, time.day, start) && withinConstraints(lecture, time.day, start)) {
-                            this.schedules[lectureIdx] = new Schedule(lecture, classroom, new Time(time.day, start, start + 1));
-                            assigned = assignSchedule(lectureIdx + 1);
+            if(!classroom.canAccommodate(lecture.students, lecture.requirements)) continue;
 
-                            if(assigned) return true;
-                            else this.schedules[lectureIdx] = null;
-                        }
-                    }
+            for(Time time : availability) {
+                for(int start = time.start; start < time.end; start++) {
+                    if(!(isClassroomAvailableWithinSchedule(lectureIdx, classroom, time.day, start) && withinConstraints(lecture, time.day, start))) continue;
+
+                    this.schedules[lectureIdx] = new Schedule(lecture, classroom, new Time(time.day, start, start + 1));
+                    assigned = assignSchedule(lectureIdx + 1);
+
+                    if(assigned) return true;
+                    else this.schedules[lectureIdx] = null;
                 }
             }
         }
@@ -67,7 +66,7 @@ public class Scheduler {
         return false;
     }
 
-    private boolean isClassroomAvailableWithSchedule(int lectureIdx, Classroom classroom, DayOfWeek day, int start) {
+    private boolean isClassroomAvailableWithinSchedule(int lectureIdx, Classroom classroom, DayOfWeek day, int start) {
         for(int idx = 0; idx < this.schedules.length; idx++) {
             if(idx == lectureIdx) continue;
 
