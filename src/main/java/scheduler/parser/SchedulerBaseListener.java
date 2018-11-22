@@ -40,13 +40,13 @@ public class SchedulerBaseListener implements SchedulerListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCreate_class(SchedulerParser.Create_classContext ctx) { }
+	@Override public void enterCreate_lecture(SchedulerParser.Create_lectureContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCreate_class(SchedulerParser.Create_classContext ctx) { }
+	@Override public void exitCreate_lecture(SchedulerParser.Create_lectureContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

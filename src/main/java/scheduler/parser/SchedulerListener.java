@@ -28,15 +28,15 @@ public interface SchedulerListener extends ParseTreeListener {
 	 */
 	void exitCreate_classroom(SchedulerParser.Create_classroomContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SchedulerParser#create_class}.
+	 * Enter a parse tree produced by {@link SchedulerParser#create_lecture}.
 	 * @param ctx the parse tree
 	 */
-	void enterCreate_class(SchedulerParser.Create_classContext ctx);
+	void enterCreate_lecture(SchedulerParser.Create_lectureContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SchedulerParser#create_class}.
+	 * Exit a parse tree produced by {@link SchedulerParser#create_lecture}.
 	 * @param ctx the parse tree
 	 */
-	void exitCreate_class(SchedulerParser.Create_classContext ctx);
+	void exitCreate_lecture(SchedulerParser.Create_lectureContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SchedulerParser#create_lecturer}.
 	 * @param ctx the parse tree

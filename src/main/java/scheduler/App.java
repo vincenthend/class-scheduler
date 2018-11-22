@@ -5,8 +5,6 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import scheduler.controller.SchedulerActionListener;
-import scheduler.parser.SchedulerLexer;
-import scheduler.parser.SchedulerParser;
 
 /**
  * Hello world!
