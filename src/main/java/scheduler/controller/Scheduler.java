@@ -1,12 +1,15 @@
 package scheduler.controller;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import scheduler.model.Classroom;
 import scheduler.model.Constraint;
 import scheduler.model.Lecture;
 import scheduler.model.Lecturer;
 import scheduler.model.Schedule;
+import scheduler.model.type.Time;
 
 public class Scheduler {
 
@@ -18,7 +21,7 @@ public class Scheduler {
 
   public Scheduler() {
     lectures = new ArrayList<>();
-    classrooms  = new ArrayList<>();
+    classrooms = new ArrayList<>();
     constraints = new ArrayList<>();
     lecturers = new ArrayList<>();
   }
@@ -35,95 +38,95 @@ public class Scheduler {
     this.constraints.add(constraint);
   }
 
-  public void addLecturer(Lecturer lecturer) {
+  public void addLecturer(Lecturer lecturer){
     this.lecturers.add(lecturer);
   }
 
     /* Scheduling */
 
-    public Schedule[] schedule() {
-        this.schedules = new Schedule[this.lectures.length];
-        Arrays.fill(this.schedules, null);
+  public Schedule[] schedule() {
+    this.schedules = new Schedule[this.lectures.size()];
+    Arrays.fill(this.schedules, null);
 
-        assignSchedule(0);
+    assignSchedule(0);
 
-        Arrays.sort(this.schedules, (schedule1, schedule2) -> {
-            // Different day
-            if(schedule1.time.day.getValue() < schedule2.time.day.getValue()) return -1;
-            if(schedule1.time.day.getValue() > schedule2.time.day.getValue()) return 1;
+    Arrays.sort(this.schedules, (schedule1, schedule2) -> {
+      // Different day
+      if(schedule1.time.day.getValue() < schedule2.time.day.getValue()) return -1;
+      if(schedule1.time.day.getValue() > schedule2.time.day.getValue()) return 1;
 
-            // Same day, different start time
-            if(schedule1.time.start < schedule2.time.start) return -1;
-            else return 1;
-        });
+      // Same day, different start time
+      if(schedule1.time.start < schedule2.time.start) return -1;
+      else return 1;
+    });
 
-        return this.schedules;
-    }
+    return this.schedules;
+  }
 
-    private boolean assignSchedule(int lectureIdx) {
-        // Assignment done
-        if(lectureIdx == this.lectures.length) return true;
+  private boolean assignSchedule(int lectureIdx) {
+    // Assignment done
+    if(lectureIdx == this.lectures.size()) return true;
 
-        // Assign with all possible classrooms and available time
-        boolean assigned;
+    // Assign with all possible classrooms and available time
+    boolean assigned;
 
-        Lecture lecture = this.lectures[lectureIdx];
-        Time[] availability = lecture.lecturer.availability;
+    Lecture lecture = this.lectures.get(lectureIdx);
+    Time[] availability = lecture.lecturer.availability;
 
-        for(Classroom classroom : this.classrooms) {
-            if(!classroom.canAccommodate(lecture.students, lecture.requirements)) continue;
+    for(Classroom classroom : this.classrooms) {
+      if(!classroom.canAccommodate(lecture.students, lecture.requirements)) continue;
 
-            for(Time time : availability) {
-                for(int start = time.start; start < time.end; start++) {
-                    if(!(isClassroomAvailableWithinSchedule(lectureIdx, classroom, time.day, start) && withinConstraints(lecture, time.day, start))) continue;
+      for(Time time : availability) {
+        for(int start = time.start; start < time.end; start++) {
+          if(!(isClassroomAvailableWithinSchedule(lectureIdx, classroom, time.day, start) && withinConstraints(lecture, time.day, start))) continue;
 
-                    this.schedules[lectureIdx] = new Schedule(lecture, classroom, new Time(time.day, start, start + 1));
-                    assigned = assignSchedule(lectureIdx + 1);
+          this.schedules[lectureIdx] = new Schedule(lecture, classroom, new Time(time.day, start, start + 1));
+          assigned = assignSchedule(lectureIdx + 1);
 
-                    if(assigned) return true;
-                    else this.schedules[lectureIdx] = null;
-                }
-            }
+          if(assigned) return true;
+          else this.schedules[lectureIdx] = null;
         }
-
-        return false;
+      }
     }
 
-    private boolean isClassroomAvailableWithinSchedule(int lectureIdx, Classroom classroom, DayOfWeek day, int start) {
-        for(int idx = 0; idx < this.schedules.length; idx++) {
-            if(idx == lectureIdx) continue;
+    return false;
+  }
 
-            Schedule schedule = this.schedules[idx];
-            if(schedule == null) continue;
+  private boolean isClassroomAvailableWithinSchedule(int lectureIdx, Classroom classroom, DayOfWeek day, int start) {
+    for(int idx = 0; idx < this.schedules.length; idx++) {
+      if(idx == lectureIdx) continue;
 
-            if(classroom == schedule.classroom && day == schedule.time.day && start == schedule.time.start) return false;
-        }
+      Schedule schedule = this.schedules[idx];
+      if(schedule == null) continue;
 
-        return true;
+      if(classroom == schedule.classroom && day == schedule.time.day && start == schedule.time.start) return false;
     }
 
-    private boolean withinConstraints(Lecture lecture, DayOfWeek day, int start) {
-        for(Constraint constraint : this.constraints) {
-            if(!constraint.has(lecture)) continue;
+    return true;
+  }
 
-            for(Lecture otherLecture : constraint.lectures) {
-                if(otherLecture == lecture) continue;
+  private boolean withinConstraints(Lecture lecture, DayOfWeek day, int start) {
+    for(Constraint constraint : this.constraints) {
+      if(!constraint.has(lecture)) continue;
 
-                int otherLectureIdx = findLectureIdx(otherLecture);
-                if(this.schedules[otherLectureIdx] == null) continue;
+      for(Lecture otherLecture : constraint.lectures) {
+        if(otherLecture == lecture) continue;
 
-                if(day == this.schedules[otherLectureIdx].time.day && start == this.schedules[otherLectureIdx].time.start) return false;
-            }
-        }
+        int otherLectureIdx = findLectureIdx(otherLecture);
+        if(this.schedules[otherLectureIdx] == null) continue;
 
-        return true;
+        if(day == this.schedules[otherLectureIdx].time.day && start == this.schedules[otherLectureIdx].time.start) return false;
+      }
     }
 
-    private int findLectureIdx(Lecture lecture) {
-        for(int idx = 0; idx < this.lectures.length; idx++) {
-            if(this.lectures[idx] == lecture) return idx;
-        }
+    return true;
+  }
 
-        return -1;
+  private int findLectureIdx(Lecture lecture) {
+    for(int idx = 0; idx < this.lectures.size(); idx++) {
+      if(this.lectures.get(idx) == lecture) return idx;
     }
+
+    return -1;
+  }
 }
