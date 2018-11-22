@@ -14,7 +14,12 @@ public class App {
         // Serialize object
 
         // Schedule
-        Schedule[] schedules = Scheduler.schedule(null, null);
+        Scheduler scheduler = new Scheduler();
+        scheduler.setLectures(null);
+        scheduler.setClassrooms(null);
+        scheduler.setConstraints(null);
+
+        Schedule[] schedules = scheduler.schedule();
 
         // Print Schedules
 
