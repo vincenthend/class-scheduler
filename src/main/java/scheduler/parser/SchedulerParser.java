@@ -22,12 +22,12 @@ public class SchedulerParser extends Parser {
 		C_THURSDAY=30, C_FRIDAY=31, C_SATURDAY=32, C_SUNDAY=33, NUM=34, STR_LITERAL=35,
 		COMMA=36;
 	public static final int
-		RULE_start = 0, RULE_create_classroom = 1, RULE_create_class = 2, RULE_create_lecturer = 3,
+		RULE_start = 0, RULE_create_classroom = 1, RULE_create_lecture = 2, RULE_create_lecturer = 3,
 		RULE_create_schedule = 4, RULE_make_constrain = 5, RULE_time_specification = 6,
 		RULE_command = 7, RULE_class_name = 8, RULE_classroom_name = 9, RULE_facility_name = 10,
 		RULE_lecturer_name = 11, RULE_num_students = 12, RULE_class_target = 13;
 	public static final String[] ruleNames = {
-		"start", "create_classroom", "create_class", "create_lecturer", "create_schedule",
+		"start", "create_classroom", "create_lecture", "create_lecturer", "create_schedule",
 		"make_constrain", "time_specification", "command", "class_name", "classroom_name",
 		"facility_name", "lecturer_name", "num_students", "class_target"
 	};
@@ -251,7 +251,7 @@ public class SchedulerParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Create_classContext extends ParserRuleContext {
+	public static class Create_lectureContext extends ParserRuleContext {
 		public TerminalNode K_CREATE() { return getToken(SchedulerParser.K_CREATE, 0); }
 		public TerminalNode K_LECTURE() { return getToken(SchedulerParser.K_LECTURE, 0); }
 		public Class_nameContext class_name() {
@@ -278,23 +278,23 @@ public class SchedulerParser extends Parser {
 		public TerminalNode COMMA(int i) {
 			return getToken(SchedulerParser.COMMA, i);
 		}
-		public Create_classContext(ParserRuleContext parent, int invokingState) {
+		public Create_lectureContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_create_class; }
+		@Override public int getRuleIndex() { return RULE_create_lecture; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof SchedulerListener ) ((SchedulerListener)listener).enterCreate_class(this);
+			if ( listener instanceof SchedulerListener ) ((SchedulerListener)listener).enterCreate_lecture(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof SchedulerListener ) ((SchedulerListener)listener).exitCreate_class(this);
+			if ( listener instanceof SchedulerListener ) ((SchedulerListener)listener).exitCreate_lecture(this);
 		}
 	}
 
-	public final Create_classContext create_class() throws RecognitionException {
-		Create_classContext _localctx = new Create_classContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_create_class);
+	public final Create_lectureContext create_lecture() throws RecognitionException {
+		Create_lectureContext _localctx = new Create_lectureContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_create_lecture);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -613,8 +613,8 @@ public class SchedulerParser extends Parser {
 		public Create_classroomContext create_classroom() {
 			return getRuleContext(Create_classroomContext.class,0);
 		}
-		public Create_classContext create_class() {
-			return getRuleContext(Create_classContext.class,0);
+		public Create_lectureContext create_lecture() {
+			return getRuleContext(Create_lectureContext.class,0);
 		}
 		public Create_lecturerContext create_lecturer() {
 			return getRuleContext(Create_lecturerContext.class,0);
@@ -657,7 +657,7 @@ public class SchedulerParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(108);
-				create_class();
+				create_lecture();
 				}
 				break;
 			case 3:
