@@ -1,21 +1,19 @@
 package scheduler.model;
 
 import scheduler.model.enums.Facility;
+import scheduler.model.type.Facilities;
 
 public class Lecture {
 
     public String name;
     public Lecturer lecturer;
     public int students;
-    public int requirements;
+    public Facilities requirements;
 
     public Lecture(String name, Lecturer lecturer, int students, Facility... requirements){
         this.name = name;
         this.students = students;
         this.lecturer = lecturer;
-
-        for(Facility requirement : requirements) {
-            this.requirements |= (1 << requirement.getBitmask());
-        }
+        this.requirements = new Facilities(requirements);
     }
 }

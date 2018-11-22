@@ -1,20 +1,18 @@
 package scheduler.model;
 
 import scheduler.model.enums.Facility;
+import scheduler.model.type.Facilities;
 
 public class Classroom {
 
     public String name;
     public int capacity;
-    public int facilities;
+    public Facilities facilities;
 
     public Classroom(String name, int capacity, Facility... facilities) {
         this.name = name;
         this.capacity = capacity;
-
-        for(Facility facility : facilities) {
-            this.facilities |= (1 << facility.getBitmask());
-        }
+        this.facilities = new Facilities(facilities);
     }
 
     public boolean canAccomodate(int students, Facility... facilities) {
@@ -26,10 +24,6 @@ public class Classroom {
     }
 
     private boolean hasFacilities(Facility... facilities) {
-        for(Facility facility : facilities) {
-            if((this.facilities & (1 << facility.getBitmask())) == 0) return false;
-        }
-
-        return true;
+        return this.facilities.hasAllOf(facilities);
     }
 }
