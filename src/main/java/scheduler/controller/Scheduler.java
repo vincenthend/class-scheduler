@@ -1,22 +1,29 @@
 package scheduler.controller;
 
+import java.util.List;
 import scheduler.model.Classroom;
 import scheduler.model.Constraint;
-import scheduler.model.Schedule;
 import scheduler.model.Lecture;
+<<<<<<< HEAD
 import scheduler.model.type.Time;
 
 import java.time.DayOfWeek;
 import java.util.Arrays;
+=======
+import scheduler.model.Lecturer;
+import scheduler.model.Schedule;
+>>>>>>> 86dcbcd18ec0e9fd082f4670bdcda74a151c9056
 
 public class Scheduler {
 
-    public Lecture[] lectures;
-    public Classroom[] classrooms;
-    public Constraint[] constraints;
+    public List<Lecture> lectures;
+    public List<Classroom> classrooms;
+    public List<Constraint> constraints;
+    public List<Lecturer> lecturers;
     private Schedule[] schedules;
 
     public Scheduler() {}
+<<<<<<< HEAD
     public void setLectures(Lecture... lectures) {
         this.lectures = lectures;
     }
@@ -25,6 +32,23 @@ public class Scheduler {
     }
     public void setConstraints(Constraint... constraints) {
         this.constraints = constraints;
+=======
+
+    public void addLecture(Lecture lecture) {
+        this.lectures.add(lecture);
+    }
+
+    public void addClassroom(Classroom classroom) {
+        this.classrooms.add(classroom);
+    }
+
+    public void addConstraint(Constraint constraint) {
+        this.constraints.add(constraint);
+    }
+
+    public void addLecturer(Lecturer lecturer){
+        this.lecturers.add(lecturer);
+>>>>>>> 86dcbcd18ec0e9fd082f4670bdcda74a151c9056
     }
 
     /* Scheduling */
