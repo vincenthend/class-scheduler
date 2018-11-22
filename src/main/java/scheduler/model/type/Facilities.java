@@ -14,11 +14,7 @@ public class Facilities {
         }
     }
 
-    public boolean hasAllOf(Facility... facilities) {
-        for(Facility facility : facilities) {
-            if((this.indexes & (1 << facility.index)) == 0) return false;
-        }
-
-        return true;
+    public boolean hasAllOf(Facilities facilities) {
+        return (this.indexes | ~facilities.indexes) == (1 << Facility.values().length) - 1;
     }
 }

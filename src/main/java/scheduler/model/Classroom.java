@@ -15,7 +15,7 @@ public class Classroom {
         this.facilities = new Facilities(facilities);
     }
 
-    public boolean canAccomodate(int students, Facility... facilities) {
+    public boolean canAccommodate(int students, Facilities facilities) {
         return hasCapacityFor(students) && hasFacilities(facilities);
     }
 
@@ -23,7 +23,7 @@ public class Classroom {
         return this.capacity >= students;
     }
 
-    private boolean hasFacilities(Facility... facilities) {
+    private boolean hasFacilities(Facilities facilities) {
         return this.facilities.hasAllOf(facilities);
     }
 }
