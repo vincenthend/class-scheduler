@@ -3,7 +3,7 @@ start : (command ';')+;
 // CREATE CLASSROOM 7602 FOR 100 STUDENTS WITH FACILITIES 'PROJECTOR', 'AUDIO';
 create_classroom: K_CREATE K_CLASSROOM classroom_name K_FOR num_students K_STUDENTS (K_WITH K_FACILITIES facility_name (COMMA facility_name)*)?;
 // CREATE LECTURE 'ML' TAUGHT BY "Bu Dessi" FOR 100 STUDENTS REQUIRING 'PROJECTOR';
-create_class: K_CREATE K_LECTURE class_name K_TAUGHT K_BY lecturer_name K_FOR num_students K_STUDENTS (K_REQUIRING facility_name (COMMA facility_name)*)?;
+create_lecture: K_CREATE K_LECTURE class_name K_TAUGHT K_BY lecturer_name K_FOR num_students K_STUDENTS (K_REQUIRING facility_name (COMMA facility_name)*)?;
 // CREATE LECTURER 'Bu Dessi' AVAILABLE AT SUNDAY FROM 7 UNTIL 10, WEDNESDAY FROM 7 UNTIL 10;
 create_lecturer: K_CREATE K_LECTURER lecturer_name K_AVAILABLE K_AT time_specification (COMMA time_specification)*;
 // MAKE SCHEDULE FOR 'NLP', 'ML';
@@ -12,7 +12,7 @@ create_schedule: K_CREATE K_SCHEDULE K_FOR class_target;
 make_constrain: K_CONSTRAINT K_NOT K_OVERLAPPING class_name (COMMA class_name)+;
 time_specification : K_DAYS K_FROM NUM K_UNTIL NUM;
 
-command : create_classroom | create_class | create_lecturer | create_schedule | make_constrain;
+command : create_classroom | create_lecture | create_lecturer | create_schedule | make_constrain;
 class_name : STR_LITERAL;
 classroom_name : STR_LITERAL | NUM;
 facility_name: K_PROJECTOR | K_AUDIO | K_WHITEBOARD;
