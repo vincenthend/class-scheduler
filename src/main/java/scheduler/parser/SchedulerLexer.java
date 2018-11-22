@@ -1,4 +1,4 @@
-// Generated from E:/Literal Zoo/Semester 7/RPLSD/class-scheduler/src/main/java/scheduler\Scheduler.g4 by ANTLR 4.7
+// Generated from E:/ITB Stuff/Tubes/Semester 7/RPLSD/scheduler/src/main/java/scheduler\Scheduler.g4 by ANTLR 4.7
 package scheduler.parser;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
@@ -17,12 +17,12 @@ public class SchedulerLexer extends Lexer {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, WS=2, K_ALL=3, K_AT=4, K_AUDIO=5, K_AVAILABLE=6, K_BY=7, K_CLASSROOM=8,
-		K_CONSTRAINT=9, K_CREATE=10, K_DAYS=11, K_FACILITIES=12, K_FOR=13, K_FROM=14,
-		K_LECTURE=15, K_LECTURER=16, K_NOT=17, K_OVERLAPPING=18, K_PROJECTOR=19,
-		K_REQUIRING=20, K_SCHEDULE=21, K_STUDENTS=22, K_TAUGHT=23, K_UNTIL=24,
-		K_WHITEBOARD=25, K_WITH=26, C_MONDAY=27, C_TUESDAY=28, C_WEDNESDAY=29,
-		C_THURSDAY=30, C_FRIDAY=31, C_SATURDAY=32, C_SUNDAY=33, NUM=34, STR_LITERAL=35,
+		T__0=1, WS=2, K_ALL=3, K_AT=4, K_AUDIO=5, K_AVAILABLE=6, K_BY=7, K_CLASSROOM=8, 
+		K_CONSTRAINT=9, K_CREATE=10, K_DAYS=11, K_FACILITIES=12, K_FOR=13, K_FROM=14, 
+		K_LECTURE=15, K_LECTURER=16, K_NOT=17, K_OVERLAPPING=18, K_PROJECTOR=19, 
+		K_REQUIRING=20, K_SCHEDULE=21, K_STUDENTS=22, K_TAUGHT=23, K_UNTIL=24, 
+		K_WHITEBOARD=25, K_WITH=26, C_MONDAY=27, C_TUESDAY=28, C_WEDNESDAY=29, 
+		C_THURSDAY=30, C_FRIDAY=31, C_SATURDAY=32, C_SUNDAY=33, NUM=34, STR_LITERAL=35, 
 		COMMA=36;
 	public static String[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
@@ -33,28 +33,28 @@ public class SchedulerLexer extends Lexer {
 	};
 
 	public static final String[] ruleNames = {
-		"T__0", "WS", "K_ALL", "K_AT", "K_AUDIO", "K_AVAILABLE", "K_BY", "K_CLASSROOM",
-		"K_CONSTRAINT", "K_CREATE", "K_DAYS", "K_FACILITIES", "K_FOR", "K_FROM",
-		"K_LECTURE", "K_LECTURER", "K_NOT", "K_OVERLAPPING", "K_PROJECTOR", "K_REQUIRING",
-		"K_SCHEDULE", "K_STUDENTS", "K_TAUGHT", "K_UNTIL", "K_WHITEBOARD", "K_WITH",
-		"C_MONDAY", "C_TUESDAY", "C_WEDNESDAY", "C_THURSDAY", "C_FRIDAY", "C_SATURDAY",
-		"C_SUNDAY", "NUM", "STR_LITERAL", "COMMA", "DIGIT", "A", "B", "C", "D",
-		"E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
+		"T__0", "WS", "K_ALL", "K_AT", "K_AUDIO", "K_AVAILABLE", "K_BY", "K_CLASSROOM", 
+		"K_CONSTRAINT", "K_CREATE", "K_DAYS", "K_FACILITIES", "K_FOR", "K_FROM", 
+		"K_LECTURE", "K_LECTURER", "K_NOT", "K_OVERLAPPING", "K_PROJECTOR", "K_REQUIRING", 
+		"K_SCHEDULE", "K_STUDENTS", "K_TAUGHT", "K_UNTIL", "K_WHITEBOARD", "K_WITH", 
+		"C_MONDAY", "C_TUESDAY", "C_WEDNESDAY", "C_THURSDAY", "C_FRIDAY", "C_SATURDAY", 
+		"C_SUNDAY", "NUM", "STR_LITERAL", "COMMA", "DIGIT", "A", "B", "C", "D", 
+		"E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", 
 		"S", "T", "U", "V", "W", "X", "Y", "Z"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "';'", null, null, null, null, null, null, null, null, null, null,
-		null, null, null, null, null, null, null, null, null, null, null, null,
-		null, null, null, null, null, null, null, null, null, null, null, null,
+		null, "';'", null, null, null, null, null, null, null, null, null, null, 
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, null, null, null, null, null, null, null, null, null, null, null, 
 		"','"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, "WS", "K_ALL", "K_AT", "K_AUDIO", "K_AVAILABLE", "K_BY", "K_CLASSROOM",
-		"K_CONSTRAINT", "K_CREATE", "K_DAYS", "K_FACILITIES", "K_FOR", "K_FROM",
-		"K_LECTURE", "K_LECTURER", "K_NOT", "K_OVERLAPPING", "K_PROJECTOR", "K_REQUIRING",
-		"K_SCHEDULE", "K_STUDENTS", "K_TAUGHT", "K_UNTIL", "K_WHITEBOARD", "K_WITH",
-		"C_MONDAY", "C_TUESDAY", "C_WEDNESDAY", "C_THURSDAY", "C_FRIDAY", "C_SATURDAY",
+		null, null, "WS", "K_ALL", "K_AT", "K_AUDIO", "K_AVAILABLE", "K_BY", "K_CLASSROOM", 
+		"K_CONSTRAINT", "K_CREATE", "K_DAYS", "K_FACILITIES", "K_FOR", "K_FROM", 
+		"K_LECTURE", "K_LECTURER", "K_NOT", "K_OVERLAPPING", "K_PROJECTOR", "K_REQUIRING", 
+		"K_SCHEDULE", "K_STUDENTS", "K_TAUGHT", "K_UNTIL", "K_WHITEBOARD", "K_WITH", 
+		"C_MONDAY", "C_TUESDAY", "C_WEDNESDAY", "C_THURSDAY", "C_FRIDAY", "C_SATURDAY", 
 		"C_SUNDAY", "NUM", "STR_LITERAL", "COMMA"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);

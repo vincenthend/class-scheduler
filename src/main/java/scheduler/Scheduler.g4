@@ -7,7 +7,7 @@ create_lecture: K_CREATE K_LECTURE class_name K_TAUGHT K_BY lecturer_name K_FOR 
 // CREATE LECTURER 'Bu Dessi' AVAILABLE AT SUNDAY FROM 7 UNTIL 10, WEDNESDAY FROM 7 UNTIL 10;
 create_lecturer: K_CREATE K_LECTURER lecturer_name K_AVAILABLE K_AT time_specification (COMMA time_specification)*;
 // MAKE SCHEDULE FOR 'NLP', 'ML';
-create_schedule: K_CREATE K_SCHEDULE K_FOR class_target;
+create_schedule: K_CREATE K_SCHEDULE;
 // CONSTRAIN NOT OVERLAPPING "ML", "NLP"
 make_constrain: K_CONSTRAINT K_NOT K_OVERLAPPING class_name (COMMA class_name)+;
 time_specification : K_DAYS K_FROM NUM K_UNTIL NUM;

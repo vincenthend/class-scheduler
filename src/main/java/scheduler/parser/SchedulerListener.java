@@ -1,4 +1,4 @@
-// Generated from E:/Literal Zoo/Semester 7/RPLSD/class-scheduler/src/main/java/scheduler\Scheduler.g4 by ANTLR 4.7
+// Generated from E:/ITB Stuff/Tubes/Semester 7/RPLSD/scheduler/src/main/java/scheduler\Scheduler.g4 by ANTLR 4.7
 package scheduler.parser;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
