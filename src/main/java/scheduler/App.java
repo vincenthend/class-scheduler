@@ -35,7 +35,7 @@ public class App {
         try{
           parser.start();
         } catch(Exception e){
-          System.out.print(e);
+          System.out.println(e);
         }
         System.out.print("scheduler=# ");
         input = s.nextLine();
