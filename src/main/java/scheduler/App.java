@@ -25,7 +25,6 @@ public class App {
     while(!input.equals("\\q")) {
       if(!input.equals("\\q")) {
         CharStream cs = CharStreams.fromString(input);
-
         // Tokenize and build parse tree
         SchedulerLexer lexer = new SchedulerLexer(cs);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -33,7 +32,11 @@ public class App {
         SchedulerParser parser = new SchedulerParser(tokens);
         // Serialize object and Schedule
         parser.addParseListener(listener);
-        parser.start();
+        try{
+          parser.start();
+        } catch(Exception e){
+          System.out.print(e);
+        }
         System.out.print("scheduler=# ");
         input = s.nextLine();
       }
