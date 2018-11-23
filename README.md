@@ -38,17 +38,25 @@ We provide interactive console to deliver the best experience of CSQL.
 
 - Successful scheduling
   
+
 ![Success](assets/scheduling-success.png)
 
 - Failed scheduling (impossible)
   
+
 ![Failed](assets/scheduling-failed.png)
 
 - Quit console
   
+
 ![Quit](assets/scheduling-quit.png)
 
+## Use Case
+
+![Diagram Diagram-Use Case Diagram](assets/Diagram Diagram-Use Case Diagram.png)
+
 ## Developers
+
 - [Reinhard Linardi](https://github.com/reinhardlinardi) (13515011)
 - [Vincent Hendryanto H.](https://github.com/vincenthend) (13515089)
 - [Mikhael Artur D.](https://github.com/mikhael-artur) (13515099)
