@@ -10,7 +10,7 @@ CSQL can be used to define classrooms, lecturers, lectures, constraints, and cla
 
 - Create Classroom
 ```
-  CREATE CLASSROOM 7602 FOR 100 STUDENTS WITH FACILITIES "PROJECTOR", "AUDIO';
+  CREATE CLASSROOM 7602 FOR 100 STUDENTS WITH FACILITIES "PROJECTOR", "AUDIO";
 ```
 
 - Create Lecturer
