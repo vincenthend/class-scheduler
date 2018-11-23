@@ -50,15 +50,17 @@ public class Scheduler {
 
     assignSchedule(0);
 
-    Arrays.sort(this.schedules, (schedule1, schedule2) -> {
-      // Different day
-      if(schedule1.time.day.getValue() < schedule2.time.day.getValue()) return -1;
-      if(schedule1.time.day.getValue() > schedule2.time.day.getValue()) return 1;
+    if(!isSchedulingImpossible()) {
+        Arrays.sort(this.schedules, (schedule1, schedule2) -> {
+            // Different day
+            if (schedule1.time.day.getValue() < schedule2.time.day.getValue()) return -1;
+            if (schedule1.time.day.getValue() > schedule2.time.day.getValue()) return 1;
 
-      // Same day, different start time
-      if(schedule1.time.start < schedule2.time.start) return -1;
-      else return 1;
-    });
+            // Same day, different start time
+            if (schedule1.time.start < schedule2.time.start) return -1;
+            else return 1;
+        });
+    }
 
     return this.schedules;
   }
@@ -128,5 +130,13 @@ public class Scheduler {
     }
 
     return -1;
+  }
+
+  private boolean isSchedulingImpossible() {
+    for(Schedule schedule : this.schedules) {
+      if(schedule == null) return true;
+    }
+
+    return false;
   }
 }
