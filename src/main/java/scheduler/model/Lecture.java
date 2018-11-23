@@ -16,4 +16,9 @@ public class Lecture {
         this.lecturer = lecturer;
         this.requirements = new Facilities(requirements);
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

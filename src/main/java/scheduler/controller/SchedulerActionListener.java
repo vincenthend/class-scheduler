@@ -106,7 +106,8 @@ public class SchedulerActionListener extends SchedulerBaseListener {
       int i = 0;
       boolean found = false;
       while (i < this.scheduler.lectures.size() && !found) {
-        if (l.getText().equalsIgnoreCase(this.scheduler.lectures.get(i).name)) {
+        String lecture_name = l.getText().replaceAll("[\'\"]", "");
+        if (lecture_name.equalsIgnoreCase(this.scheduler.lectures.get(i).name)) {
           found = true;
           lectures.add(this.scheduler.lectures.get(i));
         }
@@ -119,6 +120,6 @@ public class SchedulerActionListener extends SchedulerBaseListener {
 
     Lecture[] lectures_arr = lectures.toArray((new Lecture[lectures.size()]));
     scheduler.addConstraint(new Constraint(lectures_arr));
-    System.out.printf("CONSTRAINTS FOR %s ADDED\n", lectures.toString());
+    System.out.printf("CONSTRAINTS FOR %s ADDED\n", lectures);
   }
 }
