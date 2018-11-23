@@ -120,6 +120,6 @@ public class SchedulerActionListener extends SchedulerBaseListener {
 
     Lecture[] lectures_arr = lectures.toArray((new Lecture[lectures.size()]));
     scheduler.addConstraint(new Constraint(lectures_arr));
-    System.out.printf("CONSTRAINTS FOR %s ADDED\n", lectures);
+    System.out.printf("CONSTRAINTS FOR %s ADDED.\n", lectures);
   }
 }
